@@ -53,7 +53,7 @@ Page({
 })
 ```
 
-根据传入 `check` `auth` 函数的 scope 参数，Authorize会自动生成对应的data值：
+根据传入 `check` `auth` 函数内的 scope 参数，Authorize会自动生成对应的data值：
 
 - userLocationAuth
 - userLocationBackgroundAuth
