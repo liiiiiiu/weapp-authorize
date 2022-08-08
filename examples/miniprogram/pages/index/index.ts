@@ -14,10 +14,24 @@ Page({
     // authorize.check('writePhotosAlbum')
   },
 
-  // 获取用户的位置信息
-  getUserLocation(e: any) {
+  // 获取地理位置
+  getLocation(e: any) {
     authorize.auth(e, 'userLocation', () => {
       console.log('userLocation authorize successful')
+      // 获得授权后的回调
+      wx.getLocation({
+        type: 'wgs84',
+        success: res => {
+          const { latitude, longitude } = res
+          wx.chooseLocation({
+            latitude: latitude,
+            longitude: longitude,
+            success: r => {
+              console.log(r)
+            }
+          })
+        },
+      })
     }, () => {
       console.log('userLocation authorize failed')
     })

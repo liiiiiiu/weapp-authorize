@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/liiiiiiu/weapp-authorize.git"
+    "url": "git@github.com:liiiiiiu/weapp-authorize.git"
   },
   "keywords": [
     "微信小程序",
