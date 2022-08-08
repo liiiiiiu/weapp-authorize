@@ -1,8 +1,12 @@
 {
   "name": "weapp-authorize",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "💯 微信小程序“授权”封装",
-  "main": "weapp-authorize.ts",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/weapp-authorize.js",
+  "types": "./dist/weapp-authorize.d.ts",
   "directories": {
     "example": "examples"
   },
