@@ -1,6 +1,6 @@
 {
   "name": "weapp-authorize",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "💯 微信小程序“授权”封装",
   "files": [
     "dist"
