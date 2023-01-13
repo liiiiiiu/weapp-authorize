@@ -1,5 +1,7 @@
 # weapp-authorize
 
+## weapp-authorize 不再更新，请使用 [Chafingdish](https://github.com/liiiiiiu/chafingdish)
+
 💯 微信小程序“授权”封装
 
 在微信小程序中使用地理位置、相册、摄像头等API前，需要调用对应的授权接口，而且在用户拒绝授权的情况下还需进行二次授权的处理；
