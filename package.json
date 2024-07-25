@@ -1,17 +1,31 @@
 {
   "name": "weapp-authorize",
   "version": "1.0.5",
-  "description": "💯 微信小程序“授权”封装",
+  "description": "🌞 微信小程序“授权”封装",
+  "scripts": {
+    "build": "vite build && tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/node": "^18.0.0",
+    "typescript": "^4.5.4",
+    "vite": "^2.9.9"
+  },
   "files": [
     "dist"
   ],
-  "main": "./dist/weapp-authorize.js",
+  "main": "./dist/weapp-authorize.es.js",
+  "module": "./dist/weapp-authorize.umd.js",
   "types": "./dist/weapp-authorize.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/weapp-authorize.es.js",
+      "require": "./dist/weapp-authorize.umd.js"
+    }
+  },
   "directories": {
     "example": "examples"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -19,7 +33,8 @@
   },
   "keywords": [
     "微信小程序",
-    "weapp"
+    "weapp",
+    "authorize"
   ],
   "author": "liujiachang",
   "license": "MIT",

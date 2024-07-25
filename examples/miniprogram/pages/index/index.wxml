@@ -1,5 +1,0 @@
-<!--index.wxml-->
-<!-- userLocationAuth 状态由Authorize类生成、管理 -->
-<button wx:if="{{ userLocationAuth }}" bindtap="getLocation">获取地理位置</button>
-<!-- 该按钮用于兼容用户拒绝授权的场景 -->
-<button wx:else openType="openSetting" bindopensetting="getLocation">获取地理位置</button>

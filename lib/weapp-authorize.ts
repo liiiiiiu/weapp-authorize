@@ -84,52 +84,6 @@ class Authorize {
   }
 
   /**
-   * 检查用户授权状态，如还未授权则使用 wx.authorize 呼出授权弹框；
-   *
-   * 建议在调用需授权接口之前，提前向用户发起授权请求，如页面 onLoad 阶段。
-   *
-   * @param {string} scopeName 需要授权的 scope
-   * @param {Function} successCallback 授权成功的回调函数
-   * @param {Function} failCallback 授权失败的回调函数
-   */
-  public check(scopeName: ScopeNameType, successCallback?: Function, failCallback?: Function) {
-    this.compare(scopeName)
-
-    const scope = 'scope.' + scopeName
-
-    wx.getSetting({
-      success: (settingRes: any) => {
-        if (settingRes.authSetting[scope]) {
-          this.authStateSettle(scopeName, true)
-
-          successCallback && successCallback(settingRes)
-
-          return
-        }
-
-        wx.authorize({
-          scope,
-          success: (authRes) => {
-            this.authStateSettle(scopeName, true)
-
-            successCallback && successCallback(authRes)
-          },
-          fail: error => {
-            this.authStateSettle(scopeName, false)
-
-            failCallback && failCallback(error)
-          }
-        })
-      },
-      fail: settingError => {
-        this.authStateSettle(scopeName, false)
-
-        failCallback && failCallback(settingError)
-      }
-    })
-  }
-
-  /**
    * 在调用需授权接口时要再次确认是否获得了用户授权；
    *
    * 如获得授权，继续执行该接口；
@@ -142,7 +96,7 @@ class Authorize {
    * @param {Function} successCallback 授权成功的回调函数
    * @param {Function} failCallback 授权失败的回调函数
    */
-  public recheck(scopeName: ScopeNameType, successCallback?: Function, failCallback?: Function) {
+  protected recheck(scopeName: ScopeNameType, successCallback?: (data?: any) => any, failCallback?: (data?: any) => any) {
     this.compare(scopeName)
 
     const scope = 'scope.' + scopeName
@@ -188,7 +142,7 @@ class Authorize {
    * @param {Function} successCallback 授权成功的回调函数
    * @param {Function} failCallback 授权失败的回调函数
    */
-  public opensetting(e: any, scopeName: ScopeNameType, successCallback?: Function, failCallback?: Function) {
+  protected opensetting(e: any, scopeName: ScopeNameType, successCallback?: (data?: any) => any, failCallback?: (data?: any) => any) {
     this.compare(scopeName)
 
     const scope = 'scope.' + scopeName
@@ -202,6 +156,52 @@ class Authorize {
 
       failCallback && failCallback('')
     }
+  }
+
+  /**
+   * 检查用户授权状态，如还未授权则使用 wx.authorize 呼出授权弹框；
+   *
+   * 建议在调用需授权接口之前，提前向用户发起授权请求，如页面 onLoad 阶段。
+   *
+   * @param {string} scopeName 需要授权的 scope
+   * @param {Function} successCallback 授权成功的回调函数
+   * @param {Function} failCallback 授权失败的回调函数
+   */
+  public check(scopeName: ScopeNameType, successCallback?: (data?: any) => any, failCallback?: (data?: any) => any) {
+    this.compare(scopeName)
+
+    const scope = 'scope.' + scopeName
+
+    wx.getSetting({
+      success: (settingRes: any) => {
+        if (settingRes.authSetting[scope]) {
+          this.authStateSettle(scopeName, true)
+
+          successCallback && successCallback(settingRes)
+
+          return
+        }
+
+        wx.authorize({
+          scope,
+          success: (authRes) => {
+            this.authStateSettle(scopeName, true)
+
+            successCallback && successCallback(authRes)
+          },
+          fail: error => {
+            this.authStateSettle(scopeName, false)
+
+            failCallback && failCallback(error)
+          }
+        })
+      },
+      fail: settingError => {
+        this.authStateSettle(scopeName, false)
+
+        failCallback && failCallback(settingError)
+      }
+    })
   }
 
   /**
@@ -220,7 +220,7 @@ class Authorize {
    * @param {Function} successCallback 授权成功的回调函数
    * @param {Function} failCallback 授权失败的回调函数
    */
-  public auth(e: any, scopeName: ScopeNameType, successCallback?: Function, failCallback?: Function) {
+  public auth(e: any, scopeName: ScopeNameType, successCallback?: (data?: any) => any, failCallback?: (data?: any) => any) {
     if (typeof e === 'string') {
       e = null
       scopeName = e
@@ -244,7 +244,7 @@ class Authorize {
 }
 
 /**
- * 💯 微信小程序“授权”封装
+ * 🌞 微信小程序“授权”封装
  *
  * scope 如下：'userLocation'|'userLocationBackground'|'record'|'camera'|'bluetooth'|'writePhotosAlbum'|'addPhoneContact'|'addPhoneCalendar'|'werun';
  *

@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "sourceMap": false,
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "declarationDir": "dist",
+    "allowSyntheticDefaultImports": true
+  },
+  "files": ["lib/weapp-authorize.ts"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
