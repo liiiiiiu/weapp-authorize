@@ -16,11 +16,11 @@ weapp-authorize 对这些接口进行了封装，仅需调用 `check` `auth` 两
 npm i weapp-authorize
 ```
 
+> 注意：在小程序中使用npm包前，需先[构建 npm](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)
+
 ## 使用
 
 使用前需要先了解微信小程序 [授权](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/authorize.html) 机制
-
-> 在小程序中使用npm包前，需先[构建 npm](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)
 
 ### 视图层
 
