@@ -1,6 +1,6 @@
 {
   "name": "weapp-authorize",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "🌞 微信小程序“授权”封装",
   "scripts": {
     "build": "vite build && tsc -p tsconfig.json"

@@ -20,6 +20,8 @@ npm i weapp-authorize
 
 使用前需要先了解微信小程序 [授权](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/authorize.html) 机制
 
+> 在小程序中使用npm包前，需先[构建 npm](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)
+
 ### 视图层
 
 ```html
